@@ -1,6 +1,6 @@
 // Queue
 
-class Queue {
+export default class Queue {
   constructor() {
     this.items = [];
   }
@@ -38,11 +38,11 @@ class Queue {
   }
 }
 
-let q = new Queue();
-q.enqueue(3);
-q.enqueue(2);
-q.dequeue();
+// let q = new Queue();
+// q.enqueue(3);
+// q.enqueue(2);
+// q.dequeue();
 
-console.log(q.isEmpty());
-console.log(q.printQueue());
-console.log(q.front());
+// console.log(q.isEmpty());
+// console.log(q.printQueue());
+// console.log(q.front());

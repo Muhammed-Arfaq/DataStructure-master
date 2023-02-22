@@ -35,3 +35,13 @@ class Trie {
     return current.isEndOfWord;
   }
 }
+
+const trie = new Trie();
+
+
+trie.insert("CAT");
+trie.insert("DOG");
+
+
+console.log(trie.search("MAT")); 
+console.log(trie.search("DOG"));
