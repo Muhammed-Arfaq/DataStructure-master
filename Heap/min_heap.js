@@ -40,6 +40,17 @@ function heappop(heap) {
 
   return removedKey;
 }
+
+function printHeap(heap) {
+  const levels = Math.floor(Math.log2(heap.length));
+  let levelStart = 0;
+  for (let i = 0; i <= levels; i++) {
+    let levelEnd = Math.min(levelStart + 2 ** i - 1, heap.length - 1);
+    console.log(" ".repeat((2 ** (levels - i + 1)) - 1) + heap.slice(levelStart, levelEnd + 1).join(" ".repeat((2 ** (levels - i + 2)) - 1)));
+    levelStart = levelEnd + 1;
+  }
+}
+
 let aHeap = [];
 
 heappush(aHeap, 9);
@@ -49,5 +60,5 @@ heappush(aHeap, 10);
 heappush(aHeap, 0);
 heappop(aHeap);
 
-
-console.log(aHeap);
+printHeap(aHeap);
+// console.log(aHeap);

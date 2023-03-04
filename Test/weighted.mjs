@@ -10,9 +10,9 @@ class Graph {
     this.AdjList.set(v, []);
   }
 
-  addEdge(v, w) {
-    this.AdjList.get(v).push(w);
-    this.AdjList.get(w).push(v);
+  addEdge(v, w, weight) {
+    this.AdjList.get(v).push({ vertex: w, weight: weight });
+    this.AdjList.get(w).push({ vertex: v, weight: weight });
   }
 
   printGraph() {
@@ -22,7 +22,7 @@ class Graph {
       var conc = "";
 
       for (var j of get_values) {
-        conc += j + " ";  
+        conc += j.vertex + "(" + j.weight + ")" + " ";
       }
 
       console.log(i + " -> " + conc);
@@ -44,7 +44,7 @@ class Graph {
       var get_list = this.AdjList.get(getQueueElement);
 
       for (var i in get_list) {
-        var neigh = get_list[i];
+        var neigh = get_list[i].vertex;
 
         if (!visited[neigh]) {
           visited[neigh] = true;
@@ -58,6 +58,7 @@ class Graph {
     var visited = {};
     this.DFSUtil(startingNode, visited);
   }
+
   DFSUtil(vert, visited) {
     visited[vert] = true;
     console.log(vert);
@@ -65,7 +66,7 @@ class Graph {
     var get_neighbours = this.AdjList.get(vert);
 
     for (var i in get_neighbours) {
-      var get_elem = get_neighbours[i];
+      var get_elem = get_neighbours[i].vertex;
       if (!visited[get_elem]) {
         this.DFSUtil(get_elem, visited);
       }
@@ -80,9 +81,9 @@ g.addVertex("B");
 g.addVertex("C");
 g.addVertex("D");
 
-g.addEdge("A", "B");
-g.addEdge("B", "D");
-g.addEdge("A", "C");
+g.addEdge("A", "B", 2);
+g.addEdge("B", "D", 3);
+g.addEdge("A", "C", 1);
 
 g.bfs("A");
 g.dfs("C");
