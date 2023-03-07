@@ -12,8 +12,8 @@ class Graph {
       this.adjacencyList[v2].push(v1);
     }
   
-    // DFS Traversing Iterative
-    depthFirstIterative(start) {
+  
+    depthFirst(start) {
       const stack = [start];
       const result = [];
       const visited = {};
@@ -52,7 +52,7 @@ class Graph {
   g.addEdge("D", "F");
   g.addEdge("E", "F");
   
-  g.depthFirstIterative("A");
+  g.depthFirst("A");
   
-  console.log(g.depthFirstIterative("A"));
+  console.log(g.depthFirst("A"));
   
